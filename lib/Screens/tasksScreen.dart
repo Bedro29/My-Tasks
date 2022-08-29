@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:todo_app/Screens/addTasksreen.dart';
-import 'package:todo_app/widgets/Models/task.dart';
-import 'package:todo_app/widgets/Models/task_data.dart';
 import 'package:todo_app/widgets/tasks_list.dart';
+import 'package:todo_app/widgets/tasks_stats.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -20,12 +18,7 @@ class TasksScreen extends StatelessWidget {
                   child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen((taskTitle) {
-                  // setState(() {
-                  //   taskslist.add(Task(name: taskTitle));
-                  //   Navigator.pop(context);
-                  // });
-                }),
+                child: AddTaskScreen((taskTitle) {}),
               )),
             );
           },
@@ -42,14 +35,10 @@ class TasksScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Icon(
-                      Icons.playlist_add_check_circle,
-                      size: 50,
-                    ),
                     SizedBox(
-                      width: 20,
+                      width: 10,
                     ),
                     FittedBox(
                       child: Text(
@@ -60,10 +49,10 @@ class TasksScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(
-                  "${Provider.of<TaskData>(context).taskslist.length} remaining tasks !",
-                  style: const TextStyle(fontSize: 20),
+                const SizedBox(
+                  height: 20,
                 ),
+                TasksStats(),
                 const SizedBox(height: 20),
                 Expanded(
                     child: Container(
@@ -73,7 +62,7 @@ class TasksScreen extends StatelessWidget {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     child: tasksList(),
                   ),
                 ))

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/widgets/Models/task_data.dart';
+import 'package:todo_app/Models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
   final Function addTaskCallBack;
@@ -24,6 +24,11 @@ class AddTaskScreen extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              decoration: const InputDecoration(
+                disabledBorder: InputBorder.none,
+                labelText: "Task",
+                hintText: "What are you going to do ?",
+              ),
               onChanged: (query) {
                 taskTitle = query;
               },
@@ -52,3 +57,11 @@ class AddTaskScreen extends StatelessWidget {
     );
   }
 }
+         
+//               
+//             onChanged: (newText){
+//               setState(() {
+//                 empty = false;
+//               });
+//             },
+//           ),

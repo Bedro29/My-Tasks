@@ -14,18 +14,28 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        taskTilte,
-        style: TextStyle(
-            decoration: isChecked ? TextDecoration.lineThrough : null),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        elevation: 2,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: CheckboxListTile(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          value: isChecked,
+          title: Text(
+            taskTilte,
+            style: TextStyle(
+                decoration: isChecked ? TextDecoration.lineThrough : null,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 1,
+                wordSpacing: 2,
+                fontSize: 15),
+          ),
+          onChanged: checkBoxChange,
+        ),
       ),
-      trailing: Checkbox(
-        activeColor: Colors.teal[400],
-        value: isChecked,
-        onChanged: checkBoxChange,
-      ),
-      onLongPress: longPressAction,
     );
   }
 }
