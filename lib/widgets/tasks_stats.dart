@@ -75,7 +75,51 @@ class TasksStats extends StatelessWidget {
                   ),
                 );
               } else {
-                return const Text('No remaining tasks for today');
+                return Container(
+                  width: width,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: FittedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      child: SizedBox(
+                        width: width,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const FittedBox(
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 8),
+                                child: Text(
+                                  'No tasks for today !',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ),
+                            FittedBox(
+                              child: CircularPercentIndicator(
+                                radius: 48,
+                                lineWidth: 12,
+                                center: const Text(
+                                  '',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                progressColor: Colors.black87,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
               }
             } else {
               return const Text('Sorry, we have a problem !');

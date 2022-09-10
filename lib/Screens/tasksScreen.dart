@@ -31,51 +31,49 @@ class TasksScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.teal[400],
         body: SafeArea(
-            child: SingleChildScrollView(
+            child: SizedBox(
+          height: height,
+          width: width,
           child: Padding(
             padding:
                 const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 40),
             child: Center(
-              child: SizedBox(
-                height: height,
-                width: width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        FittedBox(
-                          child: Text(
-                            'To DO today',
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TasksStats(),
-                    const SizedBox(height: 20),
-                    Expanded(
-                        child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      SizedBox(
+                        width: 10,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 10),
-                        child: tasksList(),
+                      FittedBox(
+                        child: Text(
+                          'To DO today',
+                          style: TextStyle(
+                              fontSize: 23, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ))
-                  ],
-                ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TasksStats(),
+                  const SizedBox(height: 20),
+                  Expanded(
+                      child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 10),
+                      child: tasksList(),
+                    ),
+                  ))
+                ],
               ),
             ),
           ),

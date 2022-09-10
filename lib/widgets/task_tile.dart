@@ -14,7 +14,7 @@ class TaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(4.0),
       child: Card(
         elevation: 2,
         shape: const RoundedRectangleBorder(
@@ -27,7 +27,7 @@ class TaskTile extends StatelessWidget {
             taskTilte,
             style: TextStyle(
                 decoration: isChecked ? TextDecoration.lineThrough : null,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 letterSpacing: 1,
                 wordSpacing: 2,
                 fontSize: 15),
