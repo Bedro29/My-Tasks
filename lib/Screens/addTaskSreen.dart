@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/Models/task_data.dart';
+import 'package:todo_app/Models/task.dart';
 
-class AddTaskScreen extends StatelessWidget {
+import 'package:todo_app/Models/utils.dart';
+
+class AddTaskScreen extends StatefulWidget {
   final Function addTaskCallBack;
 
   const AddTaskScreen(this.addTaskCallBack);
 
   @override
+  State<AddTaskScreen> createState() => _AddTaskScreenState();
+}
+
+class _AddTaskScreenState extends State<AddTaskScreen> {
+  final _taskController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _taskController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    String? taskTitle;
     return Padding(
       padding: const EdgeInsets.all(30),
       child: Center(
@@ -22,6 +37,7 @@ class AddTaskScreen extends StatelessWidget {
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             TextField(
+              controller: _taskController,
               autofocus: true,
               textAlign: TextAlign.center,
               decoration: const InputDecoration(
@@ -29,12 +45,12 @@ class AddTaskScreen extends StatelessWidget {
                 labelText: "Task",
                 hintText: "What are you going to do ?",
               ),
-              onChanged: (query) {
-                taskTitle = query;
-              },
-              onEditingComplete: () {
-                Provider.of<TaskData>(context, listen: false)
-                    .addTask(taskTitle!);
+              onEditingComplete: () async {
+                Task task = Task(
+                  title: _taskController.text,
+                );
+                Provider.of<Utils>(context, listen: false).addTask(task);
+
                 Navigator.pop(context);
               },
             ),
@@ -42,9 +58,11 @@ class AddTaskScreen extends StatelessWidget {
               height: 10,
             ),
             TextButton(
-              onPressed: () {
-                Provider.of<TaskData>(context, listen: false)
-                    .addTask(taskTitle!);
+              onPressed: () async {
+                Task task = Task(title: _taskController.text);
+
+                Provider.of<Utils>(context, listen: false).addTask(task);
+
                 Navigator.pop(context);
               },
               style: TextButton.styleFrom(
@@ -57,11 +75,3 @@ class AddTaskScreen extends StatelessWidget {
     );
   }
 }
-         
-//               
-//             onChanged: (newText){
-//               setState(() {
-//                 empty = false;
-//               });
-//             },
-//           ),

@@ -39,6 +39,7 @@ dependencies:
   dotted_border: ^2.0.0+2
   animate_do: ^2.1.0
   basic_utils: ^5.1.2
+  sqflite: ^2.0.3+1
 
   
   
